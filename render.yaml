@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: llm-groq-agent
+    env: python
+    plan: free
+    buildDir: .
+    buildCommand: pip install -r "AI Agent/requirements.txt"
+    startCommand: python -m streamlit run "AI Agent/app.py" --server.port=$PORT --server.address=0.0.0.0
+    envVars:
+      - key: GROQ_API_KEY
+        scope: run
+        sync: false
